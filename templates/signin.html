@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Please Sign In</title>
+  <script>
+	  function changeUrl() {
+	  	var form = document.getElementById("signin");
+		var password = document.getElementsByName("password")[0].value;
+		if (password == '123456') {
+			form.action = "/user/" + document.getElementsByName("username")[0].value;
+			form.submit();
+		}else{
+			var err = document.getElementById("message");
+			err.innerText = "用户名或密码错误";
+		}
+	  }
+  </script>
+</head>
+<body>
+  <form id = "signin" action = "/user/" method="post" align = "center">
+	<fieldset>
+		<legend>Please sign in</legend>
+		<p id = "message" style = "color:red"></p>
+		<p><input  name= "username" placeholder="Username" value="{{ username }}"></p>
+		<p><input  name= "password" placeholder="Password" type="password"></p>
+		<p><button type = "button" name = "subm" onclick="changeUrl()" >Sign In</button></p>		
+	</fieldset>
+  </form> 
+ 
+</body>
+</html>
